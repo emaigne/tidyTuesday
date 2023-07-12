@@ -7,6 +7,7 @@ library(tidytuesdayR)
 library(ggridges)
 library(hrbrthemes)
 library(patchwork)
+library(rcartocolor)
 
 ###################################################
 ##### Get the data
@@ -108,7 +109,7 @@ zonann_temps_long <- data.table::melt(
     value.name = "Temp"
 )
 paletteLattitude <-
-    colorRampPalette(c(paletteHemispheres[1],paletteHemispheres[3],paletteHemispheres[2]))(nlevels(zonann_temps_long$Lattitude))
+    colorRampPalette(c(paletteHemispheres[2],paletteHemispheres[3], paletteHemispheres[1]))(nlevels(zonann_temps_long$Lattitude))
 names(paletteLattitude) <- levels(zonann_temps_long$Lattitude)
 
 ggplot(zonann_temps_long, 
