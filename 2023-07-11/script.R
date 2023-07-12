@@ -42,6 +42,22 @@ all_temps <- rbindlist(
          sh_temps)
 )
 
+all_temps_long <- data.table::melt(all_temps,
+                                   id.vars=c("Year", "Hemisphere"),
+                                   value.name = "Temp",
+                                   variable.name = "Season")
+                                   
+all_temps_long[,SeasonTitle := ""]
+all_temps_long[Season=="SON",SeasonTitle := "September, October, November"]
+all_temps_long[Season=="JJA",SeasonTitle := "June, July & August"]
+all_temps_long[Season=="MAM",SeasonTitle := "March, April & May"]
+all_temps_long[Season=="DJF",SeasonTitle := "December, January & February"]
+
+all_temps_long[,SeasonTitle := factor(SeasonTitle, 
+                                     levels=c("December, January & February", 
+                                              "March, April & May", 
+                                              "June, July & August", 
+                                              "September, October, November"))]
 ###################################################
 ##### Plot the data by meteorological seasons
 
