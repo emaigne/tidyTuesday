@@ -73,7 +73,7 @@ ggplot(all_temps_long,
     geom_hline(yintercept = 0, col="#444444") +
     geom_line(linewidth=1) + 
     xlim(1950,2023) +
-    scale_y_continuous(labels = ~ ifelse(.x>0, paste0("-", .x, "°C"), paste0(.x, "°C")),
+    scale_y_continuous(labels = ~ ifelse(.x>0, paste0("+", .x, "°C"), paste0(.x, "°C")),
                        limits=c(-0.8,max(all_temps_long[,Temp], na.rm=T))) +
     scale_colour_manual(values=paletteHemispheres) +
     facet_wrap2(vars(SeasonTitle), nrow = 2, strip=strip) +
@@ -120,7 +120,7 @@ ggplot(zonann_temps_long,
     scale_colour_manual(values=paletteLattitude) +
     geom_hline(yintercept = 0, col="#444444") +
     geom_line(linewidth=1) + 
-    scale_y_continuous(labels = ~ ifelse(.x>0, paste0("-", .x, "°C"), paste0(.x, "°C")),
+    scale_y_continuous(labels = ~ ifelse(.x>0, paste0("+", .x, "°C"), paste0(.x, "°C")),
                        limits=c(-1.5,3.5)) +
     xlim(1950,2023) +
     labs(x="Year",
